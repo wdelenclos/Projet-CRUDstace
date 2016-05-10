@@ -1,4 +1,10 @@
 {
     "name": "wladimir/projet.crudstace",
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4":{
+            "Controller\\": "controller/",
+            "Model\\": "model/"
+        }
+    }
 }

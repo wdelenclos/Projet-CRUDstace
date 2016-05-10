@@ -1,3 +1,4 @@
+/vendor/
 # Compiled source #
 ###################
 *.com
@@ -39,4 +40,3 @@ Thumbs.db
 # Files not sympathic #
 #######################
 .idea/
-/vendor/
