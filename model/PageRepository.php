@@ -1,5 +1,5 @@
 <?php
-namespace model;
+namespace Model;
 
 /**
  * Class PageRepository
@@ -60,5 +60,27 @@ class PageRepository
     public function inserer(array $data)
     {
         return 1;
+    }
+
+    /**
+     * @param $slug
+     * @return \stdClass\bool
+     */
+    public function getBySlug($slug)
+    {
+        $sql ="SELECT 
+                    `id`, 
+                    `slug`, 
+                    `body`, 
+                    `title` 
+                FROM 
+                    `page` 
+                WHERE 
+                    `slug` = :slug
+                ";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->bindParam(':slug',$slug,\PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchObject();
     }
 }

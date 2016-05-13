@@ -1,7 +1,7 @@
 <?php
 namespace Controller;
 
-use model\PageRepository;
+use Model\PageRepository;
 
 /**
  * Class PageController
@@ -59,5 +59,18 @@ class PageController
      */
     public function displayAction()
 	{
+		$slug = 'teletubbies';
+		if(isset($_GET['p'])){
+			$slug = $_GET['p'];
+		}
+		// en PHP 7
+		// $slug = $_GET['p'] ?? $_POST['p'] ?? 'teletubbies';
+		$page = $this->repository->getBySlug($slug);
+		if(!$page){
+			// 404
+			include "view/404.php";
+			return;
+		}
+		include "view/page-display.php";
 	}
 }
