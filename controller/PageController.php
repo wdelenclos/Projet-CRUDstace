@@ -75,7 +75,8 @@ class PageController
 			include "view/404.php";
 			return;
 		}
-		// je dois avoir la nav initailiseee pour que la vue la montre
+		// je dois avoir la nav initialisee pour que la vue la montre
+		$nav = $this->genererLaNav();
 		// j'ai des donnees, je le affiche
 		include "view/page-display.php";
 	}
@@ -83,6 +84,7 @@ class PageController
 	private function genererLaNav()
 	{
 		ob_start();
+		include "view/nav.php";
 		// generer la nav
 		$nav = ob_get_clean();
 		return $nav;
