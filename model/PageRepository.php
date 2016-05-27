@@ -82,21 +82,27 @@ class PageRepository
         return $stmt->fetchObject();
     }
 
-    private function getLaNav()
+    public function getLaNav()
     {
-        ob_start();
+
         $sql ="SELECT
+                    `title`,
                     `slug`
                 FROM
                     `page`
 
                 ";
-        $nav = $this->PDO->prepare($sql);
-        $nav->bindParam(':slug',$slug,\PDO::PARAM_STR);
-        $nav->execute();
-        return $nav->fetchObject();
-        $nav = ob_get_clean();
+        $navigdata = $this->PDO->prepare($sql);
+        $navigdata->execute();
+        // Version nulle
+        /* $navigtable = [];
+        while ($row = $navigdata->fetchObject()){
+            $navigtable[] = $row;
+        }
+        return  $navigtable; */
 
+        // Version mieux
+        return $navigdata->fetchAll(\PDO::FETCH_OBJ);
 
     }
 }

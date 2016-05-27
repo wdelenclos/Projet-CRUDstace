@@ -83,8 +83,12 @@ class PageController
 
 	private function genererLaNav()
 	{
+
 		ob_start();
+		$data = $this->repository->getLaNav();
+		var_dump($data);
 		include "view/nav.php";
+
 		// generer la nav
 		$nav = ob_get_clean();
 		return $nav;
