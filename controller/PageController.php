@@ -86,7 +86,7 @@ class PageController
 
 		ob_start();
 		$data = $this->repository->getLaNav();
-		var_dump($data);
+
 		include "view/nav.php";
 
 		// generer la nav

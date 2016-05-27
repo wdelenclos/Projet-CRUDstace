@@ -17,11 +17,11 @@ foreach($data as $li){
         $slug = $_GET['p'];
     }
     if($slug == $li->slug ){ // Met l'active pour l'actuel
-        $active ="active";
+        $active =" class=\"active\"";
     }
     ?>
 
-    <li class="<?=$active?>"><a href="?p=<?= $li->slug ?>"><?= $li->title ?></a></li>
+    <li<?=$active?>><a href="?p=<?= $li->slug ?>"><?= $li->title ?></a></li>
                 <?php
 } ?>
 
